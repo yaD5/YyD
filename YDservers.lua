@@ -1,32 +1,62 @@
-repeat wait() until game:IsLoaded()
+-- I would appreciate if the credits doesn't get removed, ty!
+-- Credits: "fissurectomy" in Discord without the quotes!
 
-local function jumpToServer() 
-local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
-local req = request({ Url = string.format(sfUrl, 15588442388, "Desc", 100) }) 
-local body = game:GetService("HttpService"):JSONDecode(req.Body) 
-local deep = math.random(1, 3)
-if deep > 1 then 
-    for i = 1, deep, 1 do 
-        req = request({ Url = string.format(sfUrl .. "&cursor=" .. body.nextPageCursor, 15588442388, "Desc", 100) }) 
-        body = game:GetService("HttpService"):JSONDecode(req.Body) 
-        task.wait(0.1)
-    end 
-end 
-local servers = {} 
-if body and body.data then 
-    for i, v in next, body.data do 
-            if type(v) == "table" and tonumber(v.playing) and tonumber(v.maxPlayers) and v.playing < v.maxPlayers and v.id ~= game.JobId then
-                table.insert(servers, 1, v.id)
-            end
-        end
-    end
-    local randomCount = #servers
-    if not randomCount then
-        randomCount = 2
-    end
-    game:GetService("TeleportService"):TeleportToPlaceInstance(15588442388, servers[math.random(1, randomCount)], game:GetService("Players").LocalPlayer) 
+if Stairway == true then
+	return
 end
 
-while wait(1) do
-    jumpToServer()
+pcall(function() getgenv().Stairway = true end)
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+		Title = "More Info",
+		Text = 'Type "/console" in chat to know what this is for',
+		Duration = 10,
+	})
+	
+print("Basically there's a unique achievement which you can get in Pet Simulator 99 called 'Is It Real?' which gives you a huge pet which at the moment I made this script only has 1 player that has it. Everytime you ascend into the skies, there is a 1 in 1 Million chance that you will get the pet. It is unique and can be traded for a bunch of titanics. This script automates the whole climbing thing as fast as possible, good luck!")
+
+local coordinates
+local notifs = loadstring(game:HttpGet('https://raw.githubusercontent.com/CF-Trail/random/main/FE2Notifs.lua'))()
+
+notifs.alert('Execute "_G.s = false" to stop!\nThis is the fastest it can go due to stairs being generated.', nil, 1000000, 'rainbow')
+task.wait(1.0)
+
+local lastNotificationTime = 0
+local notificationDelay = 0.5
+
+local function updateCoordinates()
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+    coordinates = humanoidRootPart.Position.Y -- Only the Y axis
+
+    local currentTime = tick()
+    if currentTime - lastNotificationTime >= notificationDelay then
+        notifs.alert('Studs above the sky: ' .. tostring(math.floor(coordinates)) .. '', nil, 1.0) -- Display Y axis without decimals
+        lastNotificationTime = currentTime
+    end
+end
+
+game:GetService("RunService").Heartbeat:Connect(updateCoordinates)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120.79306030273438, -126.99183654785156, -213.44664001464844)
+
+task.wait(5)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(630.6519165039062, 143.7024383544922, -1891.4598388671875)
+
+task.wait(1)
+
+_G.s = true
+local function updateYCoordinate()
+    local currentCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    local currentPosition = currentCFrame.Position
+    currentPosition = Vector3.new(currentPosition.X, currentPosition.Y + 36, currentPosition.Z)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(currentPosition)
+end
+
+while _G.s do
+    updateYCoordinate()
+    wait(0.5)
 end
