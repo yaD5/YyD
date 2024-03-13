@@ -19,7 +19,7 @@ local coordinates
 local notifs = loadstring(game:HttpGet('https://raw.githubusercontent.com/CF-Trail/random/main/FE2Notifs.lua'))()
 
 notifs.alert('Execute "_G.s = false" to stop!\nThis is the fastest it can go due to stairs being generated.', nil, 1000000, 'rainbow')
-task.wait(1.0)
+task.wait(0.7)
 
 local lastNotificationTime = 0
 local notificationDelay = 0.5
@@ -33,7 +33,7 @@ local function updateCoordinates()
 
     local currentTime = tick()
     if currentTime - lastNotificationTime >= notificationDelay then
-        notifs.alert('Studs above the sky: ' .. tostring(math.floor(coordinates)) .. '', nil, 1.0) -- Display Y axis without decimals
+        notifs.alert('Studs above the sky: ' .. tostring(math.floor(coordinates)) .. '', nil, 0.7) -- Display Y axis without decimals
         lastNotificationTime = currentTime
     end
 end
@@ -46,7 +46,7 @@ task.wait(5)
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(630.6519165039062, 143.7024383544922, -1891.4598388671875)
 
-task.wait(1)
+task.wait(0.7)
 
 _G.s = true
 local function updateYCoordinate()
