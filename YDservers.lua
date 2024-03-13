@@ -19,7 +19,7 @@ local coordinates
 local notifs = loadstring(game:HttpGet('https://raw.githubusercontent.com/CF-Trail/random/main/FE2Notifs.lua'))()
 
 notifs.alert('Execute "_G.s = false" to stop!\nThis is the fastest it can go due to stairs being generated.', nil, 1000000, 'rainbow')
-task.wait(0.30)
+task.wait(9.9)
 
 local lastNotificationTime = 0
 local notificationDelay = 0.5
