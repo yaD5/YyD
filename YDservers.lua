@@ -58,5 +58,5 @@ end
 
 while _G.s do
     updateYCoordinate()
-    wait(0.15)
+    wait(0.23)
 end
