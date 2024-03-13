@@ -33,7 +33,7 @@ local function updateCoordinates()
 
     local currentTime = tick()
     if currentTime - lastNotificationTime >= notificationDelay then
-        notifs.alert('Studs above the sky: ' .. tostring(math.floor(coordinates)) .. '', nil, 0.7) -- Display Y axis without decimals
+        notifs.alert('Studs above the sky: ' .. tostring(math.floor(coordinates)) .. '', nil, 0.57) -- Display Y axis without decimals
         lastNotificationTime = currentTime
     end
 end
