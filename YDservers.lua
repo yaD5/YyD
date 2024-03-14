@@ -16,7 +16,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 print("Basically there's a unique achievement which you can get in Pet Simulator 99 called 'Is It Real?' which gives you a huge pet which at the moment I made this script only has 1 player that has it. Everytime you ascend into the skies, there is a 1 in 1 Million chance that you will get the pet. It is unique and can be traded for a bunch of titanics. This script automates the whole climbing thing as fast as possible, good luck!")
 
 local coordinates
-local notifs = loadstring(game:HttpGet('https://raw.githubusercontent.com/CF-Trail/random/main/FE2Notifs.lua'))()
+local notifs = loadstring(game:HttpGet('https://raw.githubusercontent.com/yaD5/Ydkmt/main/Ydkmt.lua'))()
 
 notifs.alert('Execute "_G.s = false" to stop!\nThis is the fastest it can go due to stairs being generated.', nil, 1000000, 'rainbow')
 task.wait(0.01)
